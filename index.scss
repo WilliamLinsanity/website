@@ -1,0 +1,584 @@
+$basic-font-size: 16px;
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: $basic-font-size;
+}
+@function toRem($px) {
+    @return ($px / 16px) * 1rem;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+}
+a{
+    text-decoration: none;
+}
+#menu-control {
+    display: none;
+    opacity: 0;
+}
+#menu-control:checked ~ header nav {
+    max-height: 300px;
+}
+#menu-control:checked ~ header .menu-click .menu-ham {
+    background: transparent;
+    &:before,
+    &:after {
+        top: 0;
+    }
+    &:before {
+        transform: rotate(45deg);
+    }
+    &:after {
+        transform: rotate(-45deg);
+    }
+}
+.wrap {
+    width: 100%;
+    // max-width: 1200px;
+    height: 100%;
+    header {
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        width: 100%;
+        height: 50px;
+        background-color: #e25555;
+        padding: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        .home-title {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            height: 100%;
+            padding-left: 10px;
+        }
+        nav {
+            background-color: #e25555;
+            position: absolute;
+            top: 50px;
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+            a {
+                padding: 10px;
+                border: 1px solid #ddd;
+                text-transform: uppercase;
+                display: block;
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+        .menu-click {
+            position: fixed;
+            top: 22px;
+            right: 10px;
+            width: 2em;
+            background: transparent;
+            cursor: pointer;
+            .menu-ham {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 2px;
+                background-color: #ffbfbf;
+                transition: 0.5s;
+                &:before,
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #ffbfbf;
+                }
+                &::before {
+                    top: -7px;
+                }
+                &::after {
+                    top: 7px;
+                }
+            }
+        }
+    }
+    .home {
+        width: 100%;
+        img {
+            width: 100%;
+            background-attachment: scroll;
+            vertical-align: middle;
+            object-fit: cover;
+        }
+    }
+    .items {
+        
+        h2 {
+            text-align: center;
+            font-size: toRem(35px);
+            border-bottom: 2px solid #ccc;
+            font-weight: 700;
+            padding-bottom: 30px;
+        }
+        &.about {
+            padding: 100px 50px 0 50px;
+            .detail {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                h3,
+                h4,
+                h5 {
+                    text-align: center;
+                }
+                h3 {
+                    font-size: toRem(30px);
+                    font-weight: 600;
+                    margin: 50px 0 30px;
+                }
+                h4 {
+                    font-weight: 600;
+                    font-size: toRem(20px);
+                    margin: 10px 0;
+                }
+                h5 {
+                    font-weight: 400;
+                    font-size: toRem(15px);
+                }
+                .content {
+                    line-height: 1.6;
+                    margin-bottom: 30px;
+                }
+                .pic {
+                    width: 10em;
+                    height: 10em;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        vertical-align: middle;
+                        border: 2px solid #ccc;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        object-position: 50% 10%;
+                    }
+                }
+            }
+        }
+        &.experiences {
+            padding: 100px 50px 0 50px;
+            .container {
+                font-family: 'Noto Sans TC', sans-serif;
+                margin: auto;
+                .timeline {
+                    section {
+                        display: block;
+                        text-decoration: none;
+                        background-color: #fff;
+                        border: 1px solid #aaa;
+                        box-sizing: border-box;
+                        padding: 10px;
+                        border-radius: 10px;
+                        box-shadow: 3px 3px 5px #888;
+                        h4,h5{
+                            padding: 10px 0;
+                        }
+                        &:hover {
+                            background-color: #6fa5f6;
+                            h4,
+                            h5 {
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.skills{
+            padding: 100px 50px 0 50px;
+            .container{
+                display: flex;
+                .skills-detail{
+                    width: 50%;
+                    box-sizing: border-box;
+                    margin: 0 10px;
+                    .glyphicon{                    
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 10px 0;
+                        h5{
+                            font-weight: 200;
+                            display: inline-block;
+                        }
+                        .star{
+                                font-size: 1em;
+                                height: 100%;
+                                .filled{
+                                    &:before {
+                                        font-size: 18px;
+                                        content: "\2605";
+                                        color:#e25555;
+                                     }
+                                }
+                                .empty{
+                                    &:before {
+                                        content: "\2605";
+                                        color:#ccc;
+                                     }
+                                }
+                        }
+                    }
+                }
+            }
+        }
+        &.portfolios{
+            padding: 100px 50px 0 50px;
+            .container{
+                margin-top: 50px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                .image{
+                    height: toRem(200px);
+                    padding: 0 15px;
+                    transform: scale(1);   
+                    transition: .3s ease-in-out; 
+                    overflow: hidden;
+                    &:hover{
+                        img{
+                            transform: scale(1.3);                        
+                        }
+                    }
+                    img{
+                        max-width: 100%;
+                        height: 100%;
+                        vertical-align: middle;
+                        object-fit: cover;
+                        transform: scale(1);
+                        transition: .3s ease-in-out;                        
+                    }
+                }
+            }
+        }        
+    }
+    .copyright{
+        margin-top: 20px;
+        display:flex;
+        padding: 15px 0;
+        align-items: center;
+        background-color: #e25555;
+        width: 100%;
+        .copy{
+            width: 100%;
+            text-align: center;
+        }
+        .contact-icon{
+            display: flex;
+            .linkedin,.cakeresume{
+                display: inline-block;
+                text-align:right;
+                height: toRem(30px);
+                width: toRem(30px);
+                margin: 0 5px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+                &:hover{
+                    opacity: .5;
+                }
+            }     
+        }      
+    }
+}
+// 手機版本
+@media(max-width:768px){
+    .wrap{
+        .items{
+        &.experiences {
+            .container {
+                .timeline {
+                    section {
+                        display: block;
+                        text-decoration: none;
+                        background-color: #fff;
+                        border: 1px solid #aaa;
+                        box-sizing: border-box;
+                        padding: 20px;
+                        border-radius: 10px;
+                        box-shadow: 3px 3px 5px #888;
+                        &:hover {
+                            background-color: #6fa5f6;
+                            h4,
+                            h5 {
+                                color: #fff;
+                            }
+                        }
+                    }
+                    li {
+                        box-sizing: border-box;
+                        padding: 20px 0;
+                        position: relative; 
+                        &:last-child{
+                            &::after {
+                                content: '';
+                                display: none;
+                            }
+                        }   
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            width: 1px;
+                            height: 3rem;
+                            background-color: #ccc;
+                            right: 0;
+                            left:0;
+                            margin: auto;
+                            z-index: -1;
+                        }                
+                    }
+                }
+            }
+        }
+        &.skills{
+            padding: 100px 50px 0 50px;
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 20px;
+                .skills-detail{                    
+                    width: 100%;
+                    box-sizing: border-box;
+                    margin: 0 10px;
+                    .glyphicon{                    
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 10px 0;
+                        h5{
+                            font-weight: 200;
+                            display: inline-block;
+                        }
+                        .star{
+                                font-size: 1em;
+                                height: 100%;
+                                .filled{
+                                    &:before {
+                                        font-size: 18px;
+                                        content: "\2605";
+                                        color:#e25555;
+                                     }
+                                }
+                                .empty{
+                                    &:before {
+                                        content: "\2605";
+                                        color:#ccc;
+                                     }
+                                }
+                        }
+                    }
+                }
+            }
+        }
+        &.portfolios{
+            .container{
+                .image{
+                    padding: 10px 15px;
+                }
+            }
+        }      
+    }
+        .copyright{
+            display: flex;
+            flex-direction: column;
+            .copy{
+                width: auto;
+                padding: 0 10px;
+            }
+            .contact-icon{
+                padding: 5px 0;
+                display: flex;
+            }
+        }
+    }
+}
+//桌電版本
+@media screen and (min-width: 768px) {
+    .wrap {
+        header {
+            display: flex;
+            align-items: center;
+            .home-title {
+                z-index: 1;
+                width: auto;
+            }
+            nav {
+                position: absolute;
+                top: 0;
+                max-height: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                padding-right: 10px;
+                overflow: hidden;
+                font-size: 0;
+                a {
+                    border: none;
+                    padding: 20px 10px;
+                    font-size: toRem(20px);
+                    &:hover {
+                        background-color: #ffbfbf;
+                    }
+                }
+            }
+        }
+        .menu-click {
+            display: none;
+        }
+        .home {
+            height: 50em;
+            img{
+                height: 100%;
+            }
+        }
+        .items {
+            margin-top: 100px;
+            h2 {
+                text-align: center;
+                font-size: toRem(40px);
+                border-bottom: 2px solid #ccc;
+                font-weight: 700;
+                padding-bottom: 30px;
+            }
+            &.about {
+                .detail {
+                    flex-direction: row;
+                    align-items: center;
+                    width: 100%;
+                    .about-my,
+                    .pic,
+                    .information {
+                        width: (100% /3);
+                        height: 30em;
+                    }
+                    .pic {
+                        margin-top: 50px;
+                        text-align: center;
+                        img {
+                            width: 20em;
+                            height: 20em;
+                        }
+                    }
+                    h3,
+                    h4,
+                    h5 {
+                        text-align: left;
+                    }
+                }
+            }
+            &.experiences {
+                .container {
+                    width: 50%;
+                    font-family: 'Noto Sans TC', sans-serif;
+                    margin: auto;
+                    &::after {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: 1px;
+                        clear: both;
+                    }
+                    .timeline {
+                        padding: 100px 0;
+                        li {
+                            text-align: center;
+                            width: 50%;
+                            box-sizing: border-box;
+                            padding: 20px 0;
+                            position: relative;
+                            &:nth-child(odd) {
+                                float: left;
+                                padding-right: 100px;
+                                &::before {
+                                    right: -10px;
+                                }
+                                &::after {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    width: 1px;
+                                    height: 100%;
+                                    background-color: #ccc;
+                                    right: 0;
+                                    z-index: -1;
+                                }
+                                h4::after {
+                                    right: 0;
+                                }
+                            }
+                            &:last-child {
+                                &:after {
+                                    height: 50%;
+                                }
+                            }
+                            &:nth-child(odd),
+                            &:nth-child(even) {
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    margin: auto;
+                                    z-index: 2;
+                                    width: 20px;
+                                    height: 20px;
+                                    border-radius: 50%;
+                                    background-color: #aaa;
+                                }
+                            }
+                            &:nth-child(even) {
+                                float: right;
+                                padding-left: 100px;
+                                transform: translateY(50%);
+                                &::before {
+                                    left: -10px;
+                                }
+                                h4::after {
+                                    left: 0;
+                                }
+                            }
+                        }
+                        h4 {
+                            color: #333;
+                            font-weight: 700;
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                bottom: 0;
+                                margin: auto;
+                                height: 1px;
+                                width: 100px;
+                                background-color: #aaa;
+                            }
+                        }
+                        h5 {
+                            color: #666;
+                            font-family: 100;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
