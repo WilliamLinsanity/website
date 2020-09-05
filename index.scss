@@ -246,7 +246,7 @@ a{
             .container{
                 margin-top: 50px;
                 display: flex;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
                 justify-content: center;
                 .image{
                     height: toRem(200px);
@@ -392,6 +392,7 @@ a{
         }
         &.portfolios{
             .container{
+                flex-wrap: wrap;
                 .image{
                     padding: 10px 15px;
                 }
